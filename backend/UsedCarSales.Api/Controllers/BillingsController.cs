@@ -1,0 +1,3 @@
+using Microsoft.AspNetCore.Mvc; using Microsoft.EntityFrameworkCore; using UsedCarSales.Api.Data;
+namespace UsedCarSales.Api.Controllers;
+[ApiController, Route("api/[controller]")] public class BillingsController(AppDbContext db) : ControllerBase { [HttpGet] public async Task<IActionResult> GetAll() => Ok(await db.Billings.Include(b=>b.Sale!).ThenInclude(s=>s.Car).Include(b=>b.Sale!).ThenInclude(s=>s.Customer).OrderByDescending(b=>b.IssuedAt).ToListAsync()); [HttpGet("{id:int}")] public async Task<IActionResult> Get(int id) { var b=await db.Billings.Include(x=>x.Sale!).ThenInclude(s=>s.Car).Include(x=>x.Sale!).ThenInclude(s=>s.Customer).FirstOrDefaultAsync(x=>x.Id==id); return b is null?NotFound():Ok(b); } }

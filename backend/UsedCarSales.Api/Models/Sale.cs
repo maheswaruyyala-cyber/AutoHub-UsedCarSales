@@ -1,0 +1,2 @@
+namespace UsedCarSales.Api.Models;
+public class Sale { public int Id { get; set; } public int CarId { get; set; } public Car? Car { get; set; } public int CustomerId { get; set; } public Customer? Customer { get; set; } public DateTime SaleDate { get; set; } = DateTime.UtcNow; public decimal SalePrice { get; set; } public decimal Discount { get; set; } public decimal TaxRate { get; set; } = 0.18m; public string PaymentMethod { get; set; } = "UPI"; public string PaymentStatus { get; set; } = "Paid"; public Billing? Billing { get; set; } }

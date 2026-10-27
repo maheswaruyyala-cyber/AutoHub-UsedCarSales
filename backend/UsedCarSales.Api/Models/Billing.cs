@@ -1,0 +1,2 @@
+namespace UsedCarSales.Api.Models;
+public class Billing { public int Id { get; set; } public string InvoiceNumber { get; set; } = ""; public int SaleId { get; set; } public Sale? Sale { get; set; } public decimal Subtotal { get; set; } public decimal Discount { get; set; } public decimal TaxAmount { get; set; } public decimal TotalAmount { get; set; } public DateTime IssuedAt { get; set; } = DateTime.UtcNow; }
